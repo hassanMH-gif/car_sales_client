@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Car Sales Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4.66l.12-.34h13.77l.11.34V17z"/>
+            <circle cx="7.5" cy="14.5" r="1.5"/>
+            <circle cx="16.5" cy="14.5" r="1.5"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">CAR SALES</span>
+          <span class="brand-tagline">MANAGEMENT SYSTEM</span>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="cars.html" class="nav-link">CARS</a>
+        <a href="contact.html" class="nav-link active">CONTACT</a>
+        <a href="login.html" class="nav-link nav-btn">LOGIN</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact Page Header -->
+  <section class="contact-header-section">
+    <div class="container">
+      <h1 class="page-title">CONTACT US</h1>
+      <div class="title-underline"></div>
+      <p class="page-desc">We're here to assist you with vehicle enquiries, test drive scheduling, and financing options.</p>
+    </div>
+  </section>
+
+  <!-- Main Contact Section -->
+  <main class="contact-main">
+    <div class="container">
+      <div class="contact-card">
+        
+        <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+          <div class="form-row">
+            <label for="contactName">Name:</label>
+            <div class="input-control">
+              <input type="text" id="contactName" placeholder="Enter your full name" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="contactEmail">Email:</label>
+            <div class="input-control">
+              <input type="email" id="contactEmail" placeholder="Enter your email address" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="contactMessage">Message:</label>
+            <div class="input-control">
+              <textarea id="contactMessage" rows="6" placeholder="Type your message here..." required></textarea>
+            </div>
+          </div>
+
+          <div class="form-submit-wrapper">
+            <button type="submit" class="send-btn" id="sendBtn">
+              <span>SEND</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <!-- Direct Contact Info Banner -->
+        <div class="contact-info-banner">
+          <div class="info-block">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="info-text">
+              <span class="info-label">Phone:</span>
+              <span class="info-val">+1 (555) 019-2834 / +91 9876543210</span>
+            </div>
+          </div>
+
+          <div class="info-divider"></div>
+
+          <div class="info-block">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="info-text">
+              <span class="info-label">Email:</span>
+              <a href="mailto:carsales@gmail.com" class="info-val email-link">carsales@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Success Notification Alert -->
+  <div class="alert-modal" id="alertModal">
+    <div class="alert-box">
+      <div class="alert-icon-check">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+      </div>
+      <h3>Message Sent!</h3>
+      <p>Thank you for getting in touch. One of our automotive specialists will reply to your message promptly.</p>
+      <button class="alert-ok-btn" onclick="closeAlert()">Done</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="index.html">HOME</a>
+        <span class="sep">|</span>
+        <a href="cars.html">CARS</a>
+        <span class="sep">|</span>
+        <a href="contact.html" class="active">CONTACT</a>
+      </div>
+      <p class="copyright">&copy; 2024 CAR SALES MANAGEMENT SYSTEM. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.classList.toggle('active');
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('sendBtn');
+      btn.innerHTML = '<span>SENDING...</span>';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = '<span>SEND</span>';
+        btn.disabled = false;
+        document.getElementById('alertModal').classList.add('active');
+        document.getElementById('contactForm').reset();
+      }, 700);
+    }
+
+    function closeAlert() {
+      document.getElementById('alertModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>

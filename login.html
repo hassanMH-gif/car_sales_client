@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Car Sales Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <!-- Background Glow Accents -->
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+
+  <!-- Page Wrapper -->
+  <div class="page-container">
+    <!-- Top Brand Header -->
+    <header class="top-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4.66l.12-.34h13.77l.11.34V17z"/>
+            <circle cx="7.5" cy="14.5" r="1.5"/>
+            <circle cx="16.5" cy="14.5" r="1.5"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">CAR SALES</span>
+          <span class="brand-subtitle">MANAGEMENT SYSTEM</span>
+        </div>
+      </div>
+      <a href="index.html" class="back-home-link">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Showroom
+      </a>
+    </header>
+
+    <!-- Main Auth Card -->
+    <main class="auth-main">
+      <div class="auth-card">
+        <!-- Tab Switcher -->
+        <div class="auth-tabs">
+          <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">LOGIN</button>
+          <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">REGISTER</button>
+        </div>
+
+        <!-- Login Form Panel -->
+        <div class="form-panel active" id="loginPanel">
+          <div class="panel-header">
+            <h1 class="panel-title">Welcome Back</h1>
+            <p class="panel-desc">Sign in to your client account to browse and book cars</p>
+          </div>
+
+          <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="input-group">
+              <label for="loginEmail">EMAIL</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <input type="email" id="loginEmail" placeholder="Enter your email" required value="client@carsales.com">
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="loginPassword">PASSWORD</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                <input type="password" id="loginPassword" placeholder="Enter your password" required value="••••••••">
+                <button type="button" class="pwd-toggle" onclick="togglePassword('loginPassword', this)">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-options">
+              <label class="remember-me">
+                <input type="checkbox" checked>
+                <span>Remember me</span>
+              </label>
+              <a href="#" class="forgot-link" onclick="alert('Password reset link sent to registered email.'); return false;">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <span>LOGIN</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </form>
+
+          <div class="auth-switch">
+            <span>Don't have an account?</span>
+            <button type="button" class="link-btn" onclick="switchTab('register')">REGISTER</button>
+          </div>
+        </div>
+
+        <!-- Register Form Panel -->
+        <div class="form-panel" id="registerPanel">
+          <div class="panel-header">
+            <h1 class="panel-title">Create Account</h1>
+            <p class="panel-desc">Join Car Sales to discover verified luxury cars</p>
+          </div>
+
+          <form id="registerForm" onsubmit="handleRegister(event)">
+            <div class="input-group">
+              <label for="regName">FULL NAME</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <input type="text" id="regName" placeholder="Enter your full name" required>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="regEmail">EMAIL</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <input type="email" id="regEmail" placeholder="Enter your email" required>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="regPassword">PASSWORD</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                <input type="password" id="regPassword" placeholder="Create a strong password" required>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <span>REGISTER</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </form>
+
+          <div class="auth-switch">
+            <span>Already have an account?</span>
+            <button type="button" class="link-btn" onclick="switchTab('login')">LOGIN</button>
+          </div>
+        </div>
+
+        <div class="admin-portal-link">
+          <span>Are you a showroom manager?</span>
+          <a href="../admin/login.html">Admin Portal &rarr;</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bottom-footer">
+      <div class="footer-links">
+        <a href="index.html">HOME</a>
+        <span class="sep">|</span>
+        <a href="cars.html">CARS</a>
+        <span class="sep">|</span>
+        <a href="contact.html">CONTACT</a>
+      </div>
+      <p class="copyright">&copy; 2024 CAR SALES MANAGEMENT SYSTEM</p>
+    </footer>
+  </div>
+
+  <script>
+    function switchTab(mode) {
+      const loginTab = document.getElementById('tabLogin');
+      const regTab = document.getElementById('tabRegister');
+      const loginPanel = document.getElementById('loginPanel');
+      const regPanel = document.getElementById('registerPanel');
+
+      if (mode === 'login') {
+        loginTab.classList.add('active');
+        regTab.classList.remove('active');
+        loginPanel.classList.add('active');
+        regPanel.classList.remove('active');
+      } else {
+        regTab.classList.add('active');
+        loginTab.classList.remove('active');
+        regPanel.classList.add('active');
+        loginPanel.classList.remove('active');
+      }
+    }
+
+    function togglePassword(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.style.opacity = '1';
+      } else {
+        input.type = 'password';
+        btn.style.opacity = '0.6';
+      }
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.innerHTML = '<span>Signing In...</span>';
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 700);
+    }
+
+    function handleRegister(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.innerHTML = '<span>Creating Account...</span>';
+      setTimeout(() => {
+        alert('Account created successfully! Welcome to Car Sales.');
+        window.location.href = 'index.html';
+      }, 700);
+    }
+  </script>
+</body>
+</html>

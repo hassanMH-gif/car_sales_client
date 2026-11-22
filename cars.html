@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Cars - Car Sales Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cars.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4.66l.12-.34h13.77l.11.34V17z"/>
+            <circle cx="7.5" cy="14.5" r="1.5"/>
+            <circle cx="16.5" cy="14.5" r="1.5"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">CAR SALES</span>
+          <span class="brand-tagline">MANAGEMENT SYSTEM</span>
+        </div>
+      </a>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Nav Links -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="cars.html" class="nav-link active">CARS</a>
+        <a href="contact.html" class="nav-link">CONTACT</a>
+        <a href="login.html" class="nav-link nav-btn">LOGIN</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-banner">
+    <div class="container">
+      <h1 class="page-title">AVAILABLE CARS</h1>
+      <p class="page-subtitle">Explore our curated collection of verified pre-owned & brand-new luxury cars</p>
+
+      <!-- Search Section -->
+      <div class="search-box-wrapper">
+        <form class="search-form" onsubmit="event.preventDefault(); filterCars();">
+          <div class="search-input-group">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Search cars by name, brand, or model..." oninput="filterCars()">
+          </div>
+          <button type="submit" class="search-btn">
+            <span>SEARCH</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Quick Filter Pills -->
+        <div class="filter-pills">
+          <button class="pill active" onclick="setFilter('all', this)">All Vehicles</button>
+          <button class="pill" onclick="setFilter('bmw', this)">BMW</button>
+          <button class="pill" onclick="setFilter('audi', this)">Audi</button>
+          <button class="pill" onclick="setFilter('toyota', this)">Toyota</button>
+          <button class="pill" onclick="setFilter('honda', this)">Honda</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cars Listing Section -->
+  <main class="cars-section">
+    <div class="container">
+      <div class="inventory-bar">
+        <span class="inventory-count" id="carCount">Showing <strong>4</strong> available cars</span>
+        <div class="sort-selector">
+          <label for="sortSelect">Sort by:</label>
+          <select id="sortSelect" onchange="sortCars(this.value)">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Cars List Container -->
+      <div class="cars-list" id="carsList">
+        
+        <!-- Car 1: BMW 3 Series -->
+        <article class="car-row-card" data-name="BMW 3 SERIES" data-brand="bmw" data-price="2000000">
+          <div class="car-thumb">
+            <img src="images/bmw.jpg" alt="BMW 3 Series" loading="lazy">
+            <span class="stock-badge">In Stock</span>
+          </div>
+          <div class="car-details">
+            <div class="car-info">
+              <h2 class="car-name">BMW 3 SERIES</h2>
+              <div class="specs-grid">
+                <div class="spec-item price-highlight">
+                  <span class="label">Price:</span>
+                  <span class="value">₹20,00,000 <small>($20,00,000)</small></span>
+                </div>
+                <div class="spec-item">
+                  <span class="label">Fuel:</span>
+                  <span class="value badge-fuel">Petrol</span>
+                </div>
+                <div class="spec-item">
+                  <span class="label">Model:</span>
+                  <span class="value badge-model">2024</span>
+                </div>
+              </div>
+            </div>
+            <div class="car-action">
+              <a href="car-details.html?car=bmw" class="view-btn">
+                <span>VIEW DETAILS</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Car 2: Audi A4 -->
+        <article class="car-row-card" data-name="AUDI A4" data-brand="audi" data-price="1800000">
+          <div class="car-thumb">
+            <img src="images/audi.jpg" alt="Audi A4" loading="lazy">
+            <span class="stock-badge">In Stock</span>
+          </div>
+          <div class="car-details">
+            <div class="car-info">
+              <h2 class="car-name">AUDI A4</h2>
+              <div class="specs-grid">
+                <div class="spec-item price-highlight">
+                  <span class="label">Price:</span>
+                  <span class="value">₹18,00,000 <small>($18,00,000)</small></span>
+                </div>
+                <div class="spec-item">
+                  <span class="label">Fuel:</span>
+                  <span class="value badge-fuel">Petrol</span>
+                </div>
+                <div class="spec-item">
+                  <span class="label">Model:</span>
+                  <span class="value badge-model">2024</span>
+                </div>
+              </div>
+            </div>
+            <div class="car-action">
+              <a href="car-details.html?car=audi" class="view-btn">
+                <span>VIEW DETAILS</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Car 3: Toyota Corolla -->
+        <article class="car-row-card" data-name="TOYOTA COROLLA" data-brand="toyota" data-price="1500000">
+          <div class="car-thumb">
+            <img src="images/toyota.jpg" alt="Toyota Corolla" loading="lazy">
+            <span class="stock-badge">In Stock</span>
+          </div>
+          <div class="car-details">
+            <div class="car-info">
+              <h2 class="car-name">TOYOTA COROLLA</h2>
+              <div class="specs-grid">
+                <div class="spec-item price-highlight">
+                  <span class="label">Price:</span>
+                  <span class="value">₹15,00,000 <small>($15,00,000)</small></span>
+                </div>
+                <div class="spec-item">
+                  <span class="label">Fuel:</span>
+                  <span class="value badge-fuel">Petrol</span>
+                </div>
+                <div class="spec-item">
+                  <span class="label">Model:</span>
+                  <span class="value badge-model">2024</span>
+                </div>
+              </div>
+            </div>
+            <div class="car-action">
+              <a href="car-details.html?car=toyota" class="view-btn">
+                <span>VIEW DETAILS</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Car 4: Honda City -->
+        <article class="car-row-card" data-name="HONDA CITY" data-brand="honda" data-price="1200000">
+          <div class="car-thumb">
+            <img src="images/honda.jpg" alt="Honda City" loading="lazy">
+            <span class="stock-badge">In Stock</span>
+          </div>
+          <div class="car-details">
+            <div class="car-info">
+              <h2 class="car-name">HONDA CITY</h2>
+              <div class="specs-grid">
+                <div class="spec-item price-highlight">
+                  <span class="label">Price:</span>
+                  <span class="value">₹12,00,000 <small>($12,00,000)</small></span>
+                </div>
+                <div class="spec-item">
+                  <span class="label">Fuel:</span>
+                  <span class="value badge-fuel">Petrol</span>
+                </div>
+                <div class="spec-item">
+                  <span class="label">Model:</span>
+                  <span class="value badge-model">2024</span>
+                </div>
+              </div>
+            </div>
+            <div class="car-action">
+              <a href="car-details.html?car=honda" class="view-btn">
+                <span>VIEW DETAILS</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- No Results Message -->
+      <div id="noResults" class="no-results" style="display: none;">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <h3>No Cars Found</h3>
+        <p>Try searching for BMW, Audi, Toyota, or Honda</p>
+        <button class="reset-filter-btn" onclick="resetFilters()">Reset Search</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="index.html">HOME</a>
+        <span class="sep">|</span>
+        <a href="cars.html" class="active">CARS</a>
+        <span class="sep">|</span>
+        <a href="contact.html">CONTACT</a>
+      </div>
+      <p class="copyright">&copy; 2024 CAR SALES MANAGEMENT SYSTEM. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.classList.toggle('active');
+    }
+
+    let activeFilter = 'all';
+
+    function setFilter(brand, btn) {
+      activeFilter = brand;
+      document.querySelectorAll('.filter-pills .pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      filterCars();
+    }
+
+    function filterCars() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.car-row-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        const brand = card.getAttribute('data-brand').toLowerCase();
+        const matchesQuery = name.includes(query);
+        const matchesBrand = (activeFilter === 'all') || (brand === activeFilter);
+
+        if (matchesQuery && matchesBrand) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('carCount').innerHTML = `Showing <strong>${visibleCount}</strong> available cars`;
+      document.getElementById('noResults').style.display = (visibleCount === 0) ? 'block' : 'none';
+    }
+
+    function resetFilters() {
+      document.getElementById('searchInput').value = '';
+      setFilter('all', document.querySelector('.filter-pills .pill'));
+    }
+
+    function sortCars(val) {
+      const list = document.getElementById('carsList');
+      const cards = Array.from(list.children);
+
+      if (val === 'price-asc') {
+        cards.sort((a, b) => parseInt(a.dataset.price) - parseInt(b.dataset.price));
+      } else if (val === 'price-desc') {
+        cards.sort((a, b) => parseInt(b.dataset.price) - parseInt(a.dataset.price));
+      }
+
+      cards.forEach(card => list.appendChild(card));
+    }
+  </script>
+</body>
+</html>
